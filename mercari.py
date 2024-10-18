@@ -10,7 +10,8 @@ item_url_ls = []
 
 # ブラウザの設定
 options = webdriver.ChromeOptions()
-# options.add_argument('--headless')
+options.binary_location = '/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary'
+#options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 
