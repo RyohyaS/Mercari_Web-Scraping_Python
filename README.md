@@ -1,10 +1,24 @@
 # Mercari_Web-Scraping_Python
 
-This is a code using Selenium&Webdriver to perform a Webscraping on the website “Mercari”. 
+This code uses Selenium and WebDriver to perform web scraping on the website "Mercari".
 
-How to start
-1.Install Your favorite browser. (Recommended to use ChromeCanary ver132)
-2.Enter a new css selector as appropriate. Mercari Keeps updating their website to block webscraping.
-3.Just Run
+## How to Start
 
-Functions that could be done with a little more work (no plans to make them at the moment) ▶️GUI ▶️Page number selection setting (currently handled by changing the last part of the url) ▶️Exclude keyword setting (currently handled by adding the url at the end of the url to exclude)
+1. **Install Your Favorite Browser**:
+   - Recommended to use ChromeCanary ver132.
+
+2. **Enter a New CSS Selector**:
+   - Mercari keeps updating their website to block web scraping, so adjust accordingly.
+
+3. **Just Run**:
+   - Execute the script to start scraping.
+
+## Potential Functions (No Plans to Implement at the Moment)
+
+- **GUI**: Graphical User Interface for easier interaction.
+- **Page Number Selection Setting**: Currently handled by changing the last part of the URL.
+- **Exclude Keyword Setting**: Currently handled by adding the keyword at the end of the URL to exclude it.
+
+---
+
+Feel free to tweak this format further as needed!
