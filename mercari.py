@@ -21,7 +21,7 @@ browser = webdriver.Chrome(options=options)
 browser.implicitly_wait(3)
 
 # キーワード設定
-KEYWORD = ('MacBook Pro i5 2020')
+KEYWORD = input("検索キーワードを入力してください: ")
 MAX_ITEMS = 1000
 
 def get_url():
