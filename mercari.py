@@ -48,30 +48,25 @@ def get_url():
             print(f"アイテム {i + 1} にリンクが見つかりませんでした。")
 
 
-
-
-
-
-
 def get_data():
     # 商品情報の詳細を取得する
-    for item_url in item_url_ls:
+    for index, item_url in enumerate(item_url_ls, start=1):
         browser.get(item_url)
         time.sleep(3)
 
         # shopsのページかどうかを判定する
         shops = ("shops" in item_url)
 
-        if shops:  # コロンを追加
-            # shopsのページの場合は、それより下のコードを実行する
+        if shops:
+            # shopsのページの場合の処理
 
             # 商品名
             item_name = browser.find_element(By.CSS_SELECTOR, '#product-info > section:nth-child(1) > div.mer-spacing-b-12 > div > div > h1').text
-            #商品説明
+            # 商品説明
             item_ex = browser.find_element(By.CSS_SELECTOR, "#product-info > section:nth-child(2) > div.merShowMore.mer-spacing-b-16 > div > pre").text
-            #画像取得
+            # 画像取得
             src = browser.find_element(By.CSS_SELECTOR, "#main > article > div.sc-1a095b48-2.dIrBJb > section > div > div > div > div > div.sc-1a095b48-2.bhLroK > div.sc-ab077df9-0.dvoZKC > div.slick-slider.slick-initialized > div.slick-list > div > div.slick-slide.slick-active.slick-current > div > div > div > div > figure > div.imageContainer__f8ddf3a2 > picture > img").get_attribute('src')
-            #値段取得
+            # 値段取得
             item_price = browser.find_element(By.CSS_SELECTOR, "#product-info > section:nth-child(1) > section:nth-child(2) > div > div > span:nth-child(2)").text
             # 出品者の名前
             owner_name = browser.find_element(By.CSS_SELECTOR, "#product-info > section:nth-child(4) > div.merListItem.withArrow__884ec505.hover__884ec505.sc-604b51a1-0.ildGFv.mer-spacing-b-4 > div.content__884ec505 > a > div > div > div.content__a9529387 > p").text
@@ -87,13 +82,15 @@ def get_data():
             item_ls.append(data)
             
         else:
+            # shops以外のページの場合の処理
+
             # 商品名
             item_name = browser.find_element(By.CSS_SELECTOR, '#item-info > section:nth-child(1) > div.mer-spacing-b-12 > div.merHeading.page__a7d91561.mer-spacing-b-2 > div > h1').text
-            #商品説明
+            # 商品説明
             item_ex = browser.find_element(By.CSS_SELECTOR, '#item-info > section:nth-child(2) > div.merShowMore.mer-spacing-b-16 > div > pre').text
-            #画像取得
+            # 画像取得
             src = browser.find_element(By.CSS_SELECTOR, '#main > article > div.sc-1a095b48-2.sc-28317b1a-0.dIrBJb.dcHAay.mer-spacing-b-32 > section > div > div > div.sc-1a095b48-2.bhLroK > div > div.slick-slider.slick-initialized > div.slick-list > div > div.slick-slide.slick-active.slick-current > div > div > div > div > figure > div.imageContainer__f8ddf3a2 > picture > img').get_attribute('src')
-            #値段取得
+            # 値段取得
             item_price = browser.find_element(By.CSS_SELECTOR, '#item-info > section:nth-child(1) > section:nth-child(2) > div.sc-1a095b48-9.idbTzw.mer-spacing-b-16 > div > div > span:nth-child(2)').text
             # 出品者の名前
             owner_name = browser.find_element(By.CSS_SELECTOR, "p[class='merText body__5616e150 primary__5616e150 bold__5616e150']").text
@@ -107,6 +104,10 @@ def get_data():
                 '出品者': owner_name,
             }
             item_ls.append(data)
+
+        # ページの処理が完了したらnページ目完了のメッセージを表示
+        print(f"{index} ページ目が完了しました。")
+
 
 
 def main():
