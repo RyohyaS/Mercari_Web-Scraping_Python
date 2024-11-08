@@ -9,7 +9,7 @@ from selenium.common.exceptions import NoSuchElementException
 item_ls = []
 item_url_ls = []
 
-# ブラウザの設定
+# ブa
 options = webdriver.ChromeOptions()
 options.binary_location = '/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary'
 #options.add_argument('--headless')
