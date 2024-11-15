@@ -8,36 +8,36 @@ import pandas as pd
 item_ls = []
 item_url_ls=[]
 
-#ブラウザの設定
+#Browser Setting
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 
-#ブラウザの起動
+#Open Browser
 browser = webdriver.Chrome('chromedriver',options=options)
 browser.implicitly_wait(3)
 
-#キーワード設定
+#Keyword Setting
 KEYWORD = '白Tシャツ メンズ'
 
 def get_url():
-    #売り切れ表示
+    #Display soldout
     url = 'https://jp.mercari.com/search?keyword=' + KEYWORD + '&status=sold_out%7Ctrading'
     browser.get(url)
     browser.implicitly_wait(5)
 
-    #商品の詳細ページのURLを取得する
+    #Obtain the URL of the product detail page
     item_box = browser.find_elements_by_css_selector('#item-grid > ul > li')
     for item_elem in item_box:
         item_url_ls.append(item_elem.find_element_by_css_selector('a').get_attribute('href'))
 
 def get_data():
-    #商品情報の詳細を取得する
+    #Get detailed product information
     for item_url in item_url_ls:
         browser.get(item_url)
         time.sleep(3)
-        #商品名 
+        #Product name 
         item_name = browser.find_element(By.CSS_SELECTOR,'#item-info > section:nth-child(1) > div.mer-spacing-b-12 > mer-heading').text
         shadow_root = browser.find_element(By.CSS_SELECTOR,'#item-info > section:nth-child(2) > mer-show-more').shadow_root
         item_ex = shadow_root.find_element(By.CSS_SELECTOR,'div.content.clamp').text
