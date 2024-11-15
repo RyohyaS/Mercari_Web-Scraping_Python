@@ -61,7 +61,7 @@ def get_data():
 def main():
     get_url()
     get_data()
-    pd.DataFrame(item_ls).to_csv('メルカリデータ.csv')
+    pd.DataFrame(item_ls).to_csv('mercari_data.csv')
 
 
 if __name__ == '__main__':
