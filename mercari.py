@@ -45,7 +45,7 @@ def get_url():
             browser.execute_script("window.scrollBy(0, 100);")  # Scroll 1000px
             time.sleep(0.05)  # Wait time after scroll
         else:
-            print(f"アイテム {i + 1} にリンクが見つかりませんでした。")
+            print(f"item{i + 1} link not found")
 
 
 def get_data():
@@ -106,14 +106,14 @@ def get_data():
             item_ls.append(data)
 
         # When the page processing is complete, display a message saying "Page n completed."
-        print(f"{index} ページ目が完了しました。")
+        print(f"{index} page completed")
 
 
 
 def main():
     get_url()
     get_data()
-    pd.DataFrame(item_ls).to_csv('メルカリデータ.csv')
+    pd.DataFrame(item_ls).to_csv('mercari_data.csv')
 
 if __name__ == '__main__':
     main()
