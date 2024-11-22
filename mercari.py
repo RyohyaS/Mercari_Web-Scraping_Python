@@ -60,7 +60,7 @@ def get_data():
         if shops:
             # Wben it is in shops page
 
-            # Product name
+            # Product name (found using CSS selector)
             item_name = browser.find_element(By.CSS_SELECTOR, '#product-info > section:nth-child(1) > div.mer-spacing-b-12 > div > div > h1').text
             # Product information
             item_ex = browser.find_element(By.CSS_SELECTOR, "#product-info > section:nth-child(2) > div.merShowMore.mer-spacing-b-16 > div > pre").text
@@ -71,6 +71,7 @@ def get_data():
             # Producer Name
             owner_name = browser.find_element(By.CSS_SELECTOR, "#product-info > section:nth-child(4) > div.merListItem.withArrow__884ec505.hover__884ec505.sc-604b51a1-0.ildGFv.mer-spacing-b-4 > div.content__884ec505 > a > div > div > div.content__a9529387 > p").text
 
+            #Product split for informtion
             data = {
                 '商品名': item_name,
                 '商品説明': item_ex,
@@ -95,6 +96,7 @@ def get_data():
             # Producer name
             owner_name = browser.find_element(By.CSS_SELECTOR, "p[class='merText body__5616e150 primary__5616e150 bold__5616e150']").text
 
+            #Product split for informatioon
             data = {
                 '商品名': item_name,
                 '商品説明': item_ex,
@@ -109,7 +111,7 @@ def get_data():
         print(f"{index} page completed")
 
 
-
+# ,main databse -> items found listed onto 'mercari_data.csv'
 def main():
     get_url()
     get_data()
