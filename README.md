@@ -1,4 +1,4 @@
-# Mercari_Web-Scraping_Python
+# Mercari Web-Scraping Python
 
 This code uses Selenium and WebDriver to perform web scraping on the website "Mercari".
 
@@ -8,10 +8,10 @@ This code uses Selenium and WebDriver to perform web scraping on the website "Me
    - Recommended to use ChromeCanary ver132.
 
 2. **Enter a New CSS Selector**:
-   - Mercari keeps updating their website to block web scraping, so adjust accordingly.
+   - Mercari keeps updating their website to block web scraping, so adjust the code accordingly.
 
 3. **Just Run**:
-   - Execute the script to start scraping.
+   - Execute the code to start scraping.
 
 ## Potential Functions (No Plans to Implement at the Moment)
 
