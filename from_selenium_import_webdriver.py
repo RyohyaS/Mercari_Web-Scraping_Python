@@ -37,7 +37,7 @@ def get_data():
     for item_url in item_url_ls:
         browser.get(item_url)
         time.sleep(3)
-        #Product name 
+        #Product name (found using CSS selector)
         item_name = browser.find_element(By.CSS_SELECTOR,'#item-info > section:nth-child(1) > div.mer-spacing-b-12 > mer-heading').text
         shadow_root = browser.find_element(By.CSS_SELECTOR,'#item-info > section:nth-child(2) > mer-show-more').shadow_root
         item_ex = shadow_root.find_element(By.CSS_SELECTOR,'div.content.clamp').text
@@ -46,7 +46,8 @@ def get_data():
         shadow_root1 = browser.find_element_by_css_selector('#item-grid > ul > li:nth-child(1) > a > mer-item-thumbnail').shadow_root
         price_shadow = shadow_root1.find_element(By.CSS_SELECTOR,'div > figure > div.price-container > mer-price').shadow_root
         item_price = price_shadow.find_element(By.CSS_SELECTOR,'span.number').text
-        
+
+        #Product then split for information
         data = {
             '商品名':item_name,
             '商品説明':item_ex,
@@ -57,7 +58,7 @@ def get_data():
 
         item_ls.append(data)
 
-
+# .main database -> items found are listed onto 'mercari_data.csv'
 def main():
     get_url()
     get_data()
